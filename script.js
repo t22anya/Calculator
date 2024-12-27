@@ -4,6 +4,7 @@ let output = document.getElementById('output');
 let currentInput = '';  // To store the current number input
 let operator = '';      // To store the current operator
 let firstValue = null;  // To store the first operand for calculations
+let lastInput = null;
 
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains('btn')) {
@@ -11,6 +12,7 @@ container.addEventListener('click', (e) => {
 
         if (!isNaN(value)) {
             // If a number is clicked, append it to the current input
+            lastInput= currentInput;
             currentInput += value;
             output.textContent = currentInput;
         } else if (value === 'C') {
@@ -29,7 +31,14 @@ container.addEventListener('click', (e) => {
                 currentInput = '';
                 operator = '';
             }
-        } else {
+        } else if (value === 'undo') {
+            // Clear all values and reset display
+            currentInput = lastInput;
+            firstValue = null;
+            operator = '';
+            output.textContent = currentInput;
+        }
+        else {
             // If an operator is clicked
             if (currentInput !== '') {
                 // If there's already a first value and operator, calculate it first
@@ -58,7 +67,12 @@ function calculate(num1, num2, operator) {
             return num1 * num2;
         case '/':
             return num1 / num2;
+        case '^':
+            return Math.pow(num1,num2);
+        case 'mod':
+            return num1%num2;
         default:
             return num2;
     }
 }
+
