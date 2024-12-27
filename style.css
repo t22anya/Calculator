@@ -1,3 +1,6 @@
+*{
+
+}
 body{
     display: flex;
     justify-content: center;
@@ -5,20 +8,40 @@ body{
     height: 100vh;
 }
 .container{
-    border: 2px solid grey;
+    border: 5px solid black;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 100px;
     width: 300px;
     height: 500px;
     gap: 4px 4px;
+    box-shadow: 5px 3px 5px grey;
 }
 
 #output{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    font-size: xx-large;
     grid-column: 1 / span 3;
-    border-bottom: 2px solid black;
+    border-bottom: 2px double black;
 }
 
 .btn{
+    border-radius: 50%;
     margin: 8px;
+    box-shadow: 5px 3px 5px grey;
+    background-color: palegoldenrod;
+    font-size: larger;
+    font-weight: bolder;
+}
+#Clear{
+    background-color: rgba(255, 0, 0, 0.703);
+}
+#empty{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: transparent;
 }
